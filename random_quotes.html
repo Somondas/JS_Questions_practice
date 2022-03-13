@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1 id="text"></h1>
+    <p id="author"></p>
+    <button type="button" name="button" id="quote">NEW</button>
+    <script>
+      const text = document.getElementById("text");
+      const author = document.getElementById('author')
+      const quote = document.getElementById('quote')
+
+
+      const get_Qoute = async () => {
+        const api = "https://type.fit/api/quotes";
+        try {
+          let data = await fetch(api);
+          let json_data = await  data.json()
+          getNewQuote(json_data)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      const getNewQuote = (json_data) => {
+        let ran = Math.floor(Math.random() * 999)
+        author.innerHTML = json_data[ran].author
+        text.innerHTML = json_data[ran].text
+      }
+
+      quote.addEventListener('click', get_Qoute)
+
+    </script>
+  </body>
+</html>

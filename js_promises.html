@@ -1,0 +1,23 @@
+<script>
+	
+
+let pro1 = new Promise((resolve, reject)=>{
+	let obs = {
+		name: 'Somon',
+		power: 'awesome',
+		speciality: 'never quite'
+	}
+	let {name, power, speciality} = obs
+	// resolve({name, power, speciality})
+	reject("Error!!")
+
+
+	setTimeout(()=>{
+		console.log(`I am ${name}. I am damm ${power} and I  ${speciality}`)
+	}, 2000)
+})
+pro1.then((val) =>{
+	console.log(val)
+})
+
+</script>
